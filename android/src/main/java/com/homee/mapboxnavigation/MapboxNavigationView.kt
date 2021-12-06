@@ -8,6 +8,7 @@ import com.mapbox.api.directions.v5.models.DirectionsRoute
 import com.mapbox.api.directions.v5.models.RouteOptions
 import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.navigation.base.internal.extensions.applyDefaultParams
 import com.mapbox.navigation.base.internal.route.RouteUrl
@@ -100,6 +101,8 @@ class MapboxNavigationView(private val context: ThemedReactContext) : Navigation
                     .steps(true)
                     .voiceInstructions(!this.mute)
                     .build(), routesReqCallback)
+
+             this.navigationMapboxMap.retrieveMap().setStyle("mapbox://styles/adrianj/ckwfhd5r30a4w14pksk5cngsd")
         } catch (ex: Exception) {
             sendErrorToReact(ex.toString())
         }
